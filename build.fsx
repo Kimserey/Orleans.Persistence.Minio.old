@@ -91,6 +91,7 @@ Target.create "Build" (fun _ ->
 
     !! "**/*.*proj"
     -- "**/Orleans.Persistence.Minio.*Test.*proj"
+    -- "**/samples/**/*.*proj"
     -- "**/gitversion/**/*.*proj"
     |> Seq.iter (DotNet.build setParams)
 )
@@ -107,6 +108,7 @@ Target.create "Pack" (fun _ ->
 
     !! "**/*.*proj"
     -- "**/Orleans.Persistence.Minio.*Test.*proj"
+    -- "**/samples/**/*.*proj"
     -- "**/gitversion/**/*.*proj"
     |> Seq.iter (DotNet.pack setParams)
 )
