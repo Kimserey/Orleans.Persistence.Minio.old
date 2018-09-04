@@ -1,13 +1,27 @@
 ﻿using Orleans.Persistence.Minio.Samples.GrainInterfaces;
+using Orleans.Providers;
 using System.Threading.Tasks;
 
 namespace Orleans.Persistence.Minio.Samples.Grains
 {
-    public class MySuperGrain : Grain, IMySuperGrain
+    [StorageProvider(ProviderName = "minio")]
+    public class MySuperGrain : Grain<MySuperGrainState>, IMySuperGrain
     {
-        public Task<string> SayHello(string greeting)
+        public async Task<string> SayHello(string greeting)
         {
-            return Task.FromResult($"You said: '{greeting}', I say: Hello!");
+            State.Greeting = greeting;
+            await WriteStateAsync();
+            return $"You said: '{greeting}', I say: Hello!";
         }
+
+        public Task<string> GetExistingGreeting()
+        {
+            return Task.FromResult(State.Greeting);
+        }
+    }
+
+    public class MySuperGrainState
+    {
+        public string Greeting { get; set; }
     }
 }

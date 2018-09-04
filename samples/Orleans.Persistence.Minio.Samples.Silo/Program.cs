@@ -1,5 +1,7 @@
-﻿using Orleans.Hosting;
+﻿using Microsoft.Extensions.Logging;
+using Orleans.Hosting;
 using Orleans.Persistence.Minio.Samples.Grains;
+using System;
 
 namespace Orleans.Persistence.Minio.Samples.Silo
 {
@@ -13,13 +15,16 @@ namespace Orleans.Persistence.Minio.Samples.Silo
                 {
                     options.AccessKey = "";
                     options.SecretKey = "";
-                    options.Endpoint = "";
+                    options.Endpoint = "localhost:9000";
                     options.Container = "grain-storage";
                 })
                 .ConfigureApplicationParts(partManager => partManager.AddApplicationPart(typeof(MySuperGrain).Assembly).WithReferences())
+                .ConfigureLogging(logging => logging.AddConsole())
                 .Build();
 
-            host.StartAsync();
+            host.StartAsync().Wait();
+            Console.WriteLine("Silo started");
+            Console.ReadKey();
         }
     }
 }
