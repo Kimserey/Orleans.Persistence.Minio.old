@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\samples\Orleans.Persistence.Minio.Samples.GrainInterfaces\Orleans.Persistence.Minio.Samples.GrainInterfaces.csproj" />
+    <ProjectReference Include="..\Orleans.Persistence.Minio.Samples.GrainInterfaces\Orleans.Persistence.Minio.Samples.GrainInterfaces.csproj" />
   </ItemGroup>
 
 </Project>
