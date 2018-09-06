@@ -7,6 +7,12 @@ Minio implementation of Orleans Grain Storage Provider
 
 [Minio](https://www.minio.io/) is a open source cloud storage.
 
+-----------------------------
+
+### :warning: Orleans Minio grain storage has moved to [OrleansContrib/Orleans.Persistence.Minio](https://github.com/OrleansContrib/Orleans.Persistence.Minio)
+
+-----------------------------
+
 ## Installation
 
 Install `Orleans.Persistence.Minio` NuGet package in the project containing your `SiloHost` definition with the following command line:
